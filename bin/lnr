@@ -1,0 +1,57 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var log      =  require('npmlog')
+  , lnr    =  require('../')
+  , minimist =  require('minimist')
+  , path     =  require('path')
+  , fs       =  require('fs')
+  ;
+
+function usage() {
+  var usageFile = path.join(__dirname, 'usage.txt');
+  fs.createReadStream(usageFile).pipe(process.stdout);
+}
+
+(function () {
+  var filter = null;
+  var argv = minimist(process.argv.slice(2)
+    , { boolean: [ 'h', 'help' ]
+    , string: [ 'loglevel', 'l', 'filter', 'f' ]
+  });
+
+  log.level = argv.loglevel || argv.l || 'info';
+
+  if (argv.h || argv.help) return usage();
+
+  var filterArg = argv.f || argv.filter;
+
+  if (filterArg) {
+    if (!lnr[filterArg]) {
+      log.error('lnr', 'Unknown filter, %s only the following are known %j', filterArg, Object.keys(lnr));
+      return;
+    }
+    filter = lnr[filterArg];
+  }
+
+  var linkto = argv._.shift();
+
+  if (!linkto) {
+    log.error('lnr', 'Missing directory to link to!');
+    return usage();
+  }
+
+  var linktoDir = path.resolve(process.cwd(), linkto);
+  var dirname = argv._.shift() || path.basename(linktoDir);
+  
+  lnr(process.cwd(), dirname, linktoDir, { dirFilter: filter }, function (err) {
+    if (err) log.error('lnr', err);
+  })
+  .on('info', log.info.bind(log, 'lnr'))
+  .on('verbose', log.verbose.bind(log, 'lnr'))
+  .on('warn', log.warn.bind(log, 'lnr'))
+
+})()
+
+// vim: ft=javascript tabstop=2 softtabstop=2 shiftwidth=2 expandtab

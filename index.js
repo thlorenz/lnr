@@ -7,10 +7,6 @@ var readdirp = require('readdirp')
   , rmrf     = require('rimraf')
   , EE       = require('events').EventEmitter
 
-function inspect(obj, depth) {
-  console.error(require('util').inspect(obj, false, depth || 5, true));
-}
-
 function filter(dirname, dirFilter) {
   return through.obj(onread);
 
@@ -67,7 +63,24 @@ function link(events, linktoDir) {
   }
 }
 
-exports = module.exports = function (root, dirname, linktoDir, opts, cb) {
+exports = module.exports = 
+
+/**
+ * Starts at given `root` and recurses into all subdirectories.
+ * Each directory found whose name matches `dirname` is linked to `linktoDir`.
+ * 
+ * @name lnr
+ * @function
+ * @param {string} root       directory at which to start searching
+ * @param {string} dirname    directory to link
+ * @param {string} linktoDir  destination directory to link to 
+ * @param {Object} opts       options that allow customizing which directories are linked
+ * @param {function} opts.dirFilter if provided only directories for which this
+ * function returns `true` are linked
+ * @param {function} cb       called back when all directories were linked
+ * @return {Object} event emitter that emits events about the linking progress `info|verbose|warn|error`
+ */
+function (root, dirname, linktoDir, opts, cb) {
   var events = new EE();
 
   if (typeof opts === 'function') {
@@ -90,7 +103,18 @@ exports = module.exports = function (root, dirname, linktoDir, opts, cb) {
   return events;
 }
 
-exports.isPackage = function (p) {
+exports.isPackage = 
+
+/**
+ * A built in filter that returns `true` if the directory is considered an npm package.
+ * This is determined by ensuring that the parent directory is `node_modules`
+ * 
+ * @name lnr::isPackage
+ * @function
+ * @param {string} p full path to the directory to test
+ * @return {boolean} `true` if it is a package, otherwise `false`
+ */
+function (p) {
   var fullPathToParentDir = p.slice(0, -(path.basename(p).length));
   return path.basename(fullPathToParentDir) === 'node_modules';
 }

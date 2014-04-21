@@ -1,0 +1,31 @@
+usage: lnr <linktoDir> <dirname> -- <lnr-options>
+
+  Links all directories with name <dirname>, found recursively from the current dir, to the <linktoDir>.
+  If dirname is not supplied it defaults to the name of the directory being linked to.
+
+OPTIONS:
+
+  -l, --loglevel  level at which to log: silly|verbose|info|warn|error|silent -- default: info
+
+  -f, --filter    additional filters to apply to than just matching <dirname>
+                  currently existing filters are:
+                    - isPackage: matches if the directory contains an npm package, i.e. the parent
+                      directory is node_modules
+  
+  -h, --help      Print this help message.
+
+
+EXAMPLES:
+  
+  Link all directories with name mydir to the directory of the same name that is a sibling of my current working dir
+    
+    lnr ../mydir mydir
+
+  Same as above, but omitting the dirname since it is the same as the name of the directory being linked to
+    
+    lnr ../mydir mydir
+
+  Link all directories with name mydir to the directory of the same name that is a sibling of my current working dir and
+  an npm package and log verbose.
+    
+    lnr ../mydir mydir --filter isPackage -l verbose
