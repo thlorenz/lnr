@@ -6,6 +6,13 @@ Recursively soft links all occurrences of a directory to another one.
 lnr ../myapp-core ../core --filter isPackage
 ```
 
+## When do I need this?
+
+Let's say you have a `core` package that is used by lots of your dependencies, some nested deeply in your dependency
+tree. Now you want to work on the `core` package and make sure that all of them link to the code you are working on.
+
+That's when you need this.
+
 ## Installation
 
     npm install lnr
