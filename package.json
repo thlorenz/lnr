@@ -12,10 +12,13 @@
   },
   "homepage": "https://github.com/thlorenz/lnr",
   "dependencies": {
+    "npmlog": "0.0.6",
     "readdirp": "^1.0.1",
+    "rimraf": "^2.2.6",
     "through2": "^0.4.1"
   },
   "devDependencies": {
+    "ncp": "^0.5.1",
     "tap": "~0.4.3"
   },
   "keywords": [],
