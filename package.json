@@ -1,13 +1,13 @@
 {
   "name": "lnr",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Recursively soft links all occurrences of a directory to another one",
   "main": "index.js",
   "scripts": {
     "test": "tap test/*.js"
   },
   "bin": {
-    "lnr": "./bin/lnr" 
+    "lnr": "./bin/lnr"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,13 @@
     "ncp": "~0.5.1",
     "tap": "~0.4.3"
   },
-  "keywords": [ "link", "symlink", "recursive", "development", "npm" ],
+  "keywords": [
+    "link",
+    "symlink",
+    "recursive",
+    "development",
+    "npm"
+  ],
   "author": {
     "name": "Thorsten Lorenz",
     "email": "thlorenz@gmx.de",
