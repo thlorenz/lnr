@@ -10,8 +10,10 @@ lnr ../myapp-core ../core --filter isPackage
 
     npm install lnr
 
+## Usage
+
 ```
-usage: lnr <linktoDir> <dirname> -- <lnr-options>
+lnr <linktoDir> <dirname> -- <lnr-options>
 
   Links all directories with name <dirname>, found recursively from the current dir, to the <linktoDir>.
   If dirname is not supplied it defaults to the name of the directory being linked to.
