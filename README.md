@@ -3,7 +3,7 @@
 Recursively soft links all occurrences of a directory to another one.
 
 ```sh
-lnr ../myapp-core ../core --filter isPackage
+lnr ../myapp-core core --filter isPackage
 ```
 
 ## When do I need this?
