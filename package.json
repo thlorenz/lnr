@@ -1,6 +1,6 @@
 {
   "name": "lnr",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Recursively soft links all occurrences of a directory to another one",
   "main": "index.js",
   "scripts": {
