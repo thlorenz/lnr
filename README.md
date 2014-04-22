@@ -3,7 +3,7 @@
 Recursively soft links all occurrences of a directory to another one.
 
 ```sh
-lnr ../myapp-core core --filter isPackage
+lnr ../myapp-core core --filter package
 ```
 
 ## When do I need this?
@@ -31,7 +31,7 @@ OPTIONS:
 
   -f, --filter    additional filters to apply to than just matching <dirname>
                   currently existing filters are:
-                    - isPackage: matches if the directory contains an npm package, i.e. the parent
+                    - package: matches if the directory contains an npm package, i.e. the parent
                       directory is node_modules
   
   -h, --help      Print this help message.
@@ -50,7 +50,7 @@ EXAMPLES:
   Link all directories with name mydir to the directory of the same name that is a sibling of my current working dir and
   an npm package and log verbose.
     
-    lnr ../mydir mydir --filter isPackage -l verbose
+    lnr ../mydir mydir --filter package -l verbose
 ```
 
 ## API
@@ -167,7 +167,7 @@ Type
 </dl>
 </dd>
 <dt>
-<h4 class="name" id="lnr::isPackage"><span class="type-signature"></span>lnr::isPackage<span class="signature">(p)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+<h4 class="name" id="lnr::package"><span class="type-signature"></span>lnr::package<span class="signature">(p)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 </dt>
 <dd>
 <div class="description">

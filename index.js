@@ -103,13 +103,13 @@ function (root, dirname, linktoDir, opts, cb) {
   return events;
 }
 
-exports.isPackage = 
+exports.package = 
 
 /**
  * A built in filter that returns `true` if the directory is considered an npm package.
  * This is determined by ensuring that the parent directory is `node_modules`
  * 
- * @name lnr::isPackage
+ * @name lnr::package
  * @function
  * @param {string} p full path to the directory to test
  * @return {boolean} `true` if it is a package, otherwise `false`
